@@ -6,6 +6,7 @@ Vue.use(Router)
 /* Layout */
 import Layout from '@/layout'
 import equipmentsRouter from './modules/equipments'
+import tasksRouter from './modules/tasks'
 /**
  * Note: sub-menu only appear when route children.length >= 1
  * Detail see: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
@@ -55,6 +56,7 @@ export const constantRoutes = [
     }]
   },
   equipmentsRouter,
+  tasksRouter,
   {
     path: '/form',
     component: Layout,

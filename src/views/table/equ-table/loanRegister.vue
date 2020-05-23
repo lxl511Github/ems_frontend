@@ -6,8 +6,9 @@
         <el-form-item label="工号" prop="jobNum"><el-input v-model="ruleForm.jobNum" type="text" /></el-form-item>
         <el-form-item label="所属部门" prop="department">
           <el-select v-model="ruleForm.department" placeholder="请选择部门">
-            <el-option label="应用所" value="1" />
-            <el-option label="车间部门" value="2" />
+            <el-option label="应用所" value="应用所" />
+            <el-option label="车间" value="车间" />
+            <el-input v-model="ruleForm.department" type="text" style="width:50% text-align:center" placeholder="手动输入...." />
           </el-select>
         </el-form-item>
         <el-form-item label="设备名称" prop="equName"><el-input v-model="ruleForm.equName" type="text" placeholder="请输入所借设备名称" /></el-form-item>
@@ -23,7 +24,6 @@
   </section>
 </template>
 <script>
-import { getEqu } from '../../../api/table'
 export default {
   data() {
     return {
@@ -76,32 +76,6 @@ export default {
       this.$refs['ruleForm'].resetFields()
       this.modalVisible = false
     },
-    // onSubmit(ruleForm) {
-    //   this.$refs[ruleForm].validate((valid) => {
-    //     if (valid) {
-    //       var ruleForm = JSON.stringify(this.ruleForm)
-    //       this.$axios({
-    //         methods: 'post',
-    //         url: 'api/equ/LoanMsg/',
-    //         headers: {
-    //           'Content-type': 'application/json'
-    //         },
-    //         data: ruleForm
-    //       }).then((res) => {
-    //         console.log('res_data')
-    //         console.log(res.data.error_num)
-    //         if (res.data.error_num === 0) {
-    //           this.ruleForm = {}
-    //           this.$refs['ruleForm'].resetFields()
-    //           this.modalVisible = false
-    //           getEqu()
-    //         } else {
-    //           alert('提交失败')
-    //         }
-    //       })
-    //     }
-    //   })
-    // }
     onSubmit(ruleForm) {
       this.$refs[ruleForm].validate((valid) => {
         if (valid) {
@@ -119,7 +93,7 @@ export default {
               this.ruleForm = {}
               this.$refs['ruleForm'].resetFields()
               this.modalVisible = false
-              getEqu()
+              this.$parent.getEqus()
             } else {
               alert('提交失败')
             }

@@ -2,16 +2,10 @@ import Layout from '@/layout'
 const equipmentsRouter = {
   path: '/equipment',
   component: Layout,
-  redirect: '/equipments/table',
+  // redirect: '/equipments/table',
   name: 'Equipment',
   meta: { title: '设备管理', icon: 'example' },
   children: [
-    // {
-    //   path: 'table',
-    //   name: 'Table1',
-    //   component: () => import('@/views/table/index'),
-    //   meta: { title: '设备统计表', icon: 'table' }
-    // },
     {
       path: 'equ-table',
       name: 'Table',
@@ -32,4 +26,5 @@ const equipmentsRouter = {
     }
   ]
 }
+
 export default equipmentsRouter
